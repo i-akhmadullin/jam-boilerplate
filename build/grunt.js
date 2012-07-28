@@ -57,17 +57,14 @@ module.exports = function(grunt) {
             }
         },
         proxyOnly: {
-            port: 9001,
             proxy: {
-                // include file manually
-                // see http://localhost:9001/included.html
                 includeReloadScript: true
             }
         }
     },
     server:{
         base: '../',
-        port:9999
+        port:8000
     },
     meta: {
       version: '0.1.0',
@@ -121,7 +118,9 @@ module.exports = function(grunt) {
   grunt.registerTask('watcher', 'concat styletto:dev styletto:dev_ie watch');
   grunt.registerTask('publish', 'styletto csslint concat lint min');
 
+  // http://localhost:8001/
   grunt.registerTask('reloader', 'concat styletto:dev styletto:dev_ie server reload:proxyOnly watch');
+  // http://localhost:8000/ + extension
   grunt.registerTask('livereload', 'concat styletto:dev styletto:dev_ie server reload:extension watch');
 
 };
