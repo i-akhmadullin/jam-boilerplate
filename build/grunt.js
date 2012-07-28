@@ -4,13 +4,17 @@ module.exports = function(grunt) {
   // Project configuration.
   grunt.initConfig({
     watch: {
+      html: {
+        files: '../*.html',
+        tasks: 'reload'
+      },
       scripts: {
         files: '<config:lint.files>',
-        tasks: 'concat'
+        tasks: 'concat reload'
       },
       css: {
         files: ['../blocks/*.css', '../blocks/*.styl', '../blocks/**/*.css','../blocks/**/*.styl','../blocks/**/*.less'],
-        tasks: 'styletto:dev styletto:dev_ie'
+        tasks: 'styletto:dev styletto:dev_ie reload'
       }
     },
     styletto: {
@@ -42,6 +46,28 @@ module.exports = function(grunt) {
         base64: true,
         resolveFrom: ""
       }
+    },
+    reload: {
+        port: 10000,
+        extension: {
+            port: 35729, // LR default
+            liveReload: {
+                apply_css_live: true,
+                apply_images_live: true
+            }
+        },
+        proxyOnly: {
+            port: 9001,
+            proxy: {
+                // include file manually
+                // see http://localhost:9001/included.html
+                includeReloadScript: true
+            }
+        }
+    },
+    server:{
+        base: '../',
+        port:9999
     },
     meta: {
       version: '0.1.0',
@@ -89,9 +115,13 @@ module.exports = function(grunt) {
 
   grunt.loadNpmTasks('grunt-styletto');
   grunt.loadNpmTasks('grunt-css');
+  grunt.loadNpmTasks('grunt-reload');
 
   grunt.registerTask('default', 'concat styletto:dev styletto:dev_ie');
   grunt.registerTask('watcher', 'concat styletto:dev styletto:dev_ie watch');
   grunt.registerTask('publish', 'styletto csslint concat lint min');
+
+  grunt.registerTask('reloader', 'concat styletto:dev styletto:dev_ie server reload:proxyOnly watch');
+  grunt.registerTask('livereload', 'concat styletto:dev styletto:dev_ie server reload:extension watch');
 
 };
