@@ -19,53 +19,68 @@ module.exports = function(grunt) {
     },
     styletto: {
       dev: {
-        src: "../blocks/style.css",
-        dest: "../publish/style.css",
-        compress: false,
-        base64: false,
-        resolveFrom: ""
+        src: ['../lib/**/*.css','../blocks/_b-reset/b-reset.styl' ,'../blocks/**/*.styl','../blocks/**/*.css'],
+        dest: "../publish/style.css"
       },
       dev_ie: {
         src: "../blocks/style.ie.css",
-        dest: "../publish/style.ie.css",
-        compress: false,
-        base64: false,
-        resolveFrom: ""
+        dest: "../publish/style.ie.css"
       },
       publish: {
-        src: "../blocks/style.css",
+        src: "<config:styletto.dev.src>",
         dest: "../publish/style.min.css",
         compress: true,
-        base64: true,
-        resolveFrom: ""
+        base64: true
       },
       publish_ie: {
-        src: "../blocks/style.ie.css",
+        src: "<config:styletto.dev_ie.src>",
         dest: "../publish/style.ie.min.css",
         compress: true,
-        base64: true,
-        resolveFrom: ""
+        base64: true
       }
     },
     reload: {
-        port: 10000,
-        extension: {
-            port: 35729, // LR default
-            liveReload: {
-                apply_css_live: true,
-                apply_images_live: true
-            }
-        },
-        proxyOnly: {
-            proxy: {
-                includeReloadScript: true
-            }
+      port: 10000,
+      extension: {
+        port: 35729, // LR default
+        liveReload: {
+          apply_css_live: true,
+          apply_images_live: true
         }
+      },
+      proxyOnly: {
+        proxy: {
+          includeReloadScript: true
+        }
+      }
     },
     server:{
-        base: '../',
-        port:8000
+      base: '../',
+      port:8000
     },
+    pngmin: {
+      src: ['../blocks/*.png'],
+      dest: '../publish'
+    },
+    jpgmin: {
+      src: ['../tmp/*.jpg'],
+      dest: '../publish'
+    },
+    inlineImg: {
+      src: ['../all.html'],
+      ie8: true,
+      // base: 'build/img',
+      dest: 'build'
+    },
+    // doesn't work
+    // sprites: {
+    //   testing: {
+    //     src: ['../blocks/*.png'],
+    //     css: '../publish/sprite.css',
+    //     map: '../publish/sprite.png',
+    //     margin: 50
+    //   }
+    // },
     meta: {
       version: '0.1.0',
       banner: '/*! JAM-BOILERPLATE - v<%= meta.version %> - ' +
@@ -113,6 +128,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-styletto');
   grunt.loadNpmTasks('grunt-css');
   grunt.loadNpmTasks('grunt-reload');
+  grunt.loadNpmTasks('grunt-imagine');
 
   grunt.registerTask('default', 'concat styletto:dev styletto:dev_ie');
   grunt.registerTask('watcher', 'concat styletto:dev styletto:dev_ie watch');

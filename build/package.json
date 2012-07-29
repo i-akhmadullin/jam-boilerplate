@@ -5,9 +5,10 @@
     "main": "./grunt.js",
     "dependencies": {
         "grunt-css": "*",
-        "grunt-styletto": "*",
+        "grunt-styletto": ">=0.1.2",
         "styletto": "*",
         "grunt-exec": "*",
-        "grunt-reload": "*"
+        "grunt-reload": "*",
+        "grunt-imagine": "*"
     }
 }
