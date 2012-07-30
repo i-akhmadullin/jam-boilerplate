@@ -1,15 +1,19 @@
 <h1>Использование</h1>
 <h2>Первый запуск</h2>
-```cd build```
-```npm install```
-<p>В случае ошибок в процессе установки `grunt-reload` под Windows может потребоваться установить Visual Studio (бесплатного Visual Studio Express 2010 будет достаточно).</p>
-<p>Для сжатия картинок плагином `grunt-imagine` нужно поставить хотя бы одну из утилит для сжатия, <a href="https://github.com/asciidisco/grunt-imagine/blob/master/README.md">полный список</a>.</p>
-<p>Все файлы стилей автоматически собираются в `publish/style.css`</p>
+```
+cd build
+```
+```
+npm install
+```
+<p>В случае ошибок в процессе установки grunt-reload под Windows может потребоваться установить Visual Studio (бесплатного Visual Studio Express 2010 будет достаточно).</p>
+<p>Для сжатия картинок плагином grunt-imagine нужно поставить хотя бы одну из утилит для сжатия, <a href="https://github.com/asciidisco/grunt-imagine/blob/master/README.md">полный список</a>.</p>
+<p>Все файлы стилей автоматически собираются в publish/style.css </p>
 <p>На данный момент для IE сборка стилей работает некорректно!</p>
 
 <p>После установки будут доступны команды:</p>
-<p>`grunt reloader` - объединение файлов css,js, запуск сервера для разработки по адресу http://localhost:8001, автоматическое обновление страницы при изменении файлов стилей,js или html(скрипт для обновления встраивается в страницу сервером).</p>
-<p>`grunt livereload` - тоже самое только адрес http://localhost:8001 и для обновления страницы в браузере надо использовать расширения <a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">liveReload</a> (<a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">1.6 для Chrome</a>, ).</p>
+```grunt reloader``` - объединение файлов css,js, запуск сервера для разработки по адресу http://localhost:8001, автоматическое обновление страницы при изменении файлов стилей,js или html(скрипт для обновления встраивается в страницу сервером).
+```grunt livereload``` - тоже самое только адрес http://localhost:8001 и для обновления страницы в браузере надо использовать расширения <a href="http://feedback.livereload.com/knowledgebase/articles/86242-how-do-i-install-and-use-the-browser-extensions-">liveReload</a> (<a href="https://chrome.google.com/webstore/detail/jnihajbhpnppcggbcgedagnkighmdlei">1.6 для Chrome</a>, ).
 
 <h2>Структура проекта и именования элементов</h2>
 
