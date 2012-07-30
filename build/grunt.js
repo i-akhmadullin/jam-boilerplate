@@ -19,11 +19,11 @@ module.exports = function(grunt) {
     },
     styletto: {
       dev: {
-        src: ['../lib/**/*.css','../blocks/_b-reset/b-reset.styl' ,'../blocks/**/*.styl','../blocks/**/*.css'],
+        src: ['../lib/**/*.css', '../blocks/**/!(*.ie).css', '../blocks/**/!(*.ie).styl'],
         dest: "../publish/style.css"
       },
       dev_ie: {
-        src: "../blocks/style.ie.css",
+        src: ["../blocks/**/*.ie.styl", "../blocks/**/*.ie.css"],
         dest: "../publish/style.ie.css"
       },
       publish: {
@@ -59,15 +59,15 @@ module.exports = function(grunt) {
       port:8000
     },
     pngmin: {
-      src: ['../blocks/*.png'],
-      dest: '../publish'
+      src: ['../blocks/*.png','../tmp/*.png'],
+      dest: '../'
     },
     jpgmin: {
       src: ['../tmp/*.jpg'],
-      dest: '../publish'
+      dest: '../'
     },
     inlineImg: {
-      src: ['../all.html'],
+      src: ['../index.html'],
       ie8: true,
       // base: 'build/img',
       dest: 'build'
