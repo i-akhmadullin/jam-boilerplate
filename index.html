@@ -26,48 +26,49 @@
 
     <script src="http://yandex.st/modernizr/2.6.1/modernizr.min.js"></script>
     <script src="http://yandex.st/jquery/1.8.1/jquery.min.js"></script>
-    <script src="publish/script.js"></script>
 </head>
 <body>
     <!-- Site code goes here -->
 
 
-    <!-- CHECKLIST: Change UA-XXXXX-X to site's ID
-         Google Analytics snippet BEGIN -->
-    <script>
-        var _gaq = _gaq || [];
-        _gaq.push(['_setAccount','UA-XXXXX-X'],['_trackPageview']);
-        (function() {
-            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-        })();
-    </script>
-    <!-- Google Analytics snippet END -->
-
+    <!-- CHECKLIST: Change UA-XXXXX-X to site's ID -->
     <!-- CHECKLIST: Change XXXXXXX to site's ID (3 places)
          Yandex.Metrica snippet BEGIN -->
-    <script type="text/javascript">
-    (function (d, w, c) {
+    <script src="publish/script.js"></script>
+    <script>
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount','UA-XXXXX-X'],['_trackPageview']);
+
+    (function(doc, w, script, c) {
+        var f = function () { fjs.parentNode.insertBefore(js, fjs); };
+        var js,
+            fjs = doc.getElementsByTagName(script)[0],
+            add = function(url, id) {
+                if (doc.getElementById(id)) {return;}
+                js = doc.createElement(script); js.src = url; js.async = true;
+                id && (js.id = id);
+                if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f); } else { f(); }
+            };
+
         (w[c] = w[c] || []).push(function() {
             try {
                 w.yaCounterXXXXXXX = new Ya.Metrika({id:XXXXXXX, enableAll: true, webvisor:true});
             } catch(e) {}
         });
 
-        var n = d.getElementsByTagName("script")[0],
-            s = d.createElement("script"),
-            f = function () { n.parentNode.insertBefore(s, n); };
-        s.type = "text/javascript";
-        s.async = true;
-        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
-
-        if (w.opera == "[object Opera]") {
-            d.addEventListener("DOMContentLoaded", f);
-        } else { f(); }
-    })(document, window, "yandex_metrika_callbacks");
+        add('publish/script.js');
+        // Google Analytics
+        add(('https:' == location.protocol ? '//ssl' : '//www') + '.google-analytics.com/ga.js', 'ga');
+        // Yandex Metrika
+        add(("https:" == location.protocol ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js", 'ya-metrika');
+        // Google+ button
+        //add('https://apis.google.com/js/plusone.js');
+        // Facebook SDK
+        //add('//connect.facebook.net/en_US/all.js', 'facebook-jssdk');
+        // Twitter SDK
+        //add('//platform.twitter.com/widgets.js', 'twitter-wjs');
+    }(document, window, 'script', 'yandex_metrika_callbacks'));
     </script>
     <noscript><div><img src="//mc.yandex.ru/watch/XXXXXXX" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
-    <!-- Yandex.Metrica snippet END -->
 </body>
 </html>

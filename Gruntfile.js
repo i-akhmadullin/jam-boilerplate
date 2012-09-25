@@ -4,33 +4,33 @@ module.exports = function( grunt ) {
     styletto: {
       dev: {
         src: [
-          '../blocks/_b-reset/b-reset.styl',
-          '../lib/**/*.css',
-          '../blocks/**/!(!*|*.ie).css',
-          '../blocks/**/!(!*|*.ie|config).styl'
+          'blocks/_b-reset/b-reset.styl',
+          'lib/**/*.css',
+          'blocks/**/!(!*|*.ie).css',
+          'blocks/**/!(!*|*.ie|config).styl'
         ],
-        dest: '../publish/style.css',
+        dest: 'publish/style.css',
         errors: "alert"
       },
       dev_ie: {
         src: [
-          '../blocks/_b-reset/b-reset.ie.styl',
-          '../blocks/**/!(!*)*.ie.styl',
-          '../blocks/**/!(!*)*.ie.css'
+          'blocks/_b-reset/b-reset.ie.styl',
+          'blocks/**/!(!*)*.ie.styl',
+          'blocks/**/!(!*)*.ie.css'
         ],
-        dest: '../publish/style.ie.css',
+        dest: 'publish/style.ie.css',
         errors: "alert"
       },
       publish: {
         src: '<config:styletto.dev.src>',
-        dest: '../publish/style.min.css',
+        dest: 'publish/style.min.css',
         compress: true,
         base64: true,
         errors: "error"
       },
       publish_ie: {
         src: '<config:styletto.dev_ie.src>',
-        dest: '../publish/style.ie.min.css',
+        dest: 'publish/style.ie.min.css',
         compress: true,
         base64: true,
         errors: "error"
@@ -44,15 +44,15 @@ module.exports = function( grunt ) {
       },
       css: {
         files: [
-          '../blocks/**/*.css',
-          '../blocks/**/*.styl',
-          '../blocks/**/*.less'
+          'blocks/**/*.css',
+          'blocks/**/*.styl',
+          'blocks/**/*.less'
         ],
         tasks: 'styletto:dev styletto:dev_ie reload'
       },
       reload: {
         files: [
-          '../*.html'
+          '*.html'
         ],
         tasks: 'reload'
       }
@@ -60,8 +60,8 @@ module.exports = function( grunt ) {
     lint: {
       files: [
         'Gruntfile.js',
-        '../lib/**/*.js',
-        '../blocks/**/*.js'
+        'lib/**/*.js',
+        'blocks/**/*.js'
       ]
     },
     // specifying JSHint options and globals
@@ -85,27 +85,27 @@ module.exports = function( grunt ) {
       }
     },
 
-    rev: {
-      js: 'scripts/**/*.js',
-      css: 'styles/**/*.css',
-      img: 'images/**'
-    },
+    // rev: {
+    //   js: 'scripts/**/*.js',
+    //   css: 'styles/**/*.css',
+    //   img: 'images/**'
+    // },
 
     // Optimizes JPGs and PNGs (with jpegtran & optipng)
-    img: {
-      dist: '<config:rev.img>'
-    },
+    // img: {
+    //   dist: '<config:rev.img>'
+    // },
 
     concat: {
       dist: {
-        src: ['../lib/**/*.js', '../blocks/**/*.js'],
-        dest: '../publish/script.js'
+        src: ['lib/**/*.js', 'blocks/**/*.js'],
+        dest: 'publish/script.js'
       }
     },
     min: {
       dist: {
         src: '<config:concat.dist.dest>',
-        dest: '../publish/script.min.js'
+        dest: 'publish/script.min.js'
       }
     }
   });
