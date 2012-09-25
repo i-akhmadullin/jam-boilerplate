@@ -1,22 +1,6 @@
-/*global module:false*/
-module.exports = function(grunt) {
-
-  // Project configuration.
+module.exports = function( grunt ) {
+  'use strict';
   grunt.initConfig({
-    watch: {
-      scripts: {
-        files: '<config:lint.files>',
-        tasks: 'concat'
-      },
-      css: {
-        files: [
-          '../blocks/**/*.css',
-          '../blocks/**/*.styl',
-          '../blocks/**/*.less'
-        ],
-        tasks: 'styletto:dev styletto:dev_ie'
-      }
-    },
     styletto: {
       dev: {
         src: [
@@ -52,42 +36,36 @@ module.exports = function(grunt) {
         errors: "error"
       }
     },
-    meta: {
-      version: '0.1.1',
-      banner: '/*! JAM-BOILERPLATE - v<%= meta.version %> - ' +
-        '<%= grunt.template.today("yyyy-mm-dd") %>\n' +
-        '* http://PROJECT_WEBSITE/\n' +
-        '* Copyright (c) <%= grunt.template.today("yyyy") %> ' +
-        'YOUR_NAME; Licensed MIT */'
+
+    watch: {
+      scripts: {
+        files: '<config:lint.files>',
+        tasks: 'concat reload'
+      },
+      css: {
+        files: [
+          '../blocks/**/*.css',
+          '../blocks/**/*.styl',
+          '../blocks/**/*.less'
+        ],
+        tasks: 'styletto:dev styletto:dev_ie reload'
+      },
+      reload: {
+        files: [
+          '../*.html'
+        ],
+        tasks: 'reload'
+      }
     },
     lint: {
       files: [
-        'grunt.js',
+        'Gruntfile.js',
         '../lib/**/*.js',
         '../blocks/**/*.js'
       ]
     },
-    concat: {
-      dist: {
-        src: ['../lib/**/*.js', '../blocks/**/*.js'],
-        dest: '../publish/script.js'
-      }
-    },
-    min: {
-      dist: {
-        src: '<config:concat.dist.dest>',
-        dest: '../publish/script.min.js'
-      }
-    },
-    csslint: {
-      blocks: {
-        src: '../blocks/**/*.css',
-        rules: {
-          "import": false,
-          "overqualified-elements": 2
-        }
-      }
-    },
+    // specifying JSHint options and globals
+    // https://github.com/cowboy/grunt/blob/master/docs/task_lint.md#specifying-jshint-options-and-globals
     jshint: {
       options: {
         curly: true,
@@ -106,14 +84,33 @@ module.exports = function(grunt) {
         jQuery: true
       }
     },
-    uglify: {}
+
+    rev: {
+      js: 'scripts/**/*.js',
+      css: 'styles/**/*.css',
+      img: 'images/**'
+    },
+
+    // Optimizes JPGs and PNGs (with jpegtran & optipng)
+    img: {
+      dist: '<config:rev.img>'
+    },
+
+    concat: {
+      dist: {
+        src: ['../lib/**/*.js', '../blocks/**/*.js'],
+        dest: '../publish/script.js'
+      }
+    },
+    min: {
+      dist: {
+        src: '<config:concat.dist.dest>',
+        dest: '../publish/script.min.js'
+      }
+    }
   });
 
-  grunt.loadNpmTasks('grunt-styletto');
-  grunt.loadNpmTasks('grunt-css');
-
   grunt.registerTask('default', 'concat styletto:dev styletto:dev_ie');
-  grunt.registerTask('watcher', 'concat styletto:dev styletto:dev_ie watch');
+  grunt.registerTask('reloader', 'concat styletto:dev styletto:dev_ie server');
   grunt.registerTask('publish', 'concat lint styletto csslint min');
-
 };
