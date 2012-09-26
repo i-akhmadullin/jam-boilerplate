@@ -20,9 +20,7 @@
     config.styl
     style.css
     style.ie.css
-build/
-    grunt.js
-    package.json
+    Gruntfile.js
 lib/
 publish/
 tmp/
