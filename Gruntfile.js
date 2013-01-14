@@ -93,7 +93,7 @@ module.exports = function( grunt ) {
     concat: {
       dist: {
         src: [
-          'lib/**/!(jquery.min|html5shiv).js',
+          'lib/**/!(jquery|jquery.min|html5shiv).js',
           'blocks/**/*.js'
         ],
         dest: 'publish/script.js'
