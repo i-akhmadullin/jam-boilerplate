@@ -10,7 +10,7 @@ module.exports = function( grunt ) {
           'blocks/**/!(!*|*.ie|config).styl'
         ],
         dest: 'publish/style.css',
-        errors: "alert"
+        errors: 'alert'
       },
       dev_ie: {
         src: [
@@ -19,21 +19,21 @@ module.exports = function( grunt ) {
           'blocks/**/!(!*)*.ie.css'
         ],
         dest: 'publish/style.ie.css',
-        errors: "alert"
+        errors: 'alert'
       },
       publish: {
         src: '<config:styletto.dev.src>',
-        dest: 'publish/style.min.css',
+        dest: '<config:styletto.dev.dest>',
         compress: true,
         base64: true,
-        errors: "error"
+        errors: 'error'
       },
       publish_ie: {
         src: '<config:styletto.dev_ie.src>',
-        dest: 'publish/style.ie.min.css',
+        dest: '<config:styletto.dev_ie.dest>',
         compress: true,
         base64: true,
-        errors: "error"
+        errors: 'error'
       }
     },
 
@@ -84,12 +84,6 @@ module.exports = function( grunt ) {
         jQuery: true
       }
     },
-
-    // rev: {
-    //   js: 'scripts/**/*.js',
-    //   css: 'styles/**/*.css',
-    //   img: 'images/**'
-    // },
 
     // Optimizes JPGs and PNGs (with jpegtran & optipng)
     // img: {
