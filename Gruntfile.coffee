@@ -24,18 +24,20 @@ module.exports = (grunt) ->
 
       jade:
         files: [
-          'pages/**/*.jade'
+          'jade/**/*.jade'
         ]
         tasks: 'jade reload'
 
     jade:
       debug:
         options:
-          pretty: true
-
+          pretty:  true
+          data:
+            ga:      'UA-XXXXX-X'
+            metrika: 'XXXXXXX'
         files:
-          'about.html': 'pages/about.jade'
-          'main.html':  'pages/main.jade'
+          'about.html': 'jade/about.jade'
+          'main.html':  'jade/main.jade'
 
     styletto:
       dev:
@@ -76,18 +78,18 @@ module.exports = (grunt) ->
           ]
 
       publish:
-        src: '<config:styletto.dev.dest>'
+        src:  '<config:styletto.dev.dest>'
         dest: '<config:styletto.dev.dest>'
         compress: true
-        base64: true
-        errors: 'error'
+        base64:   true
+        errors:   'error'
 
       publish_ie:
-        src: '<config:styletto.dev_ie.dest>'
+        src:  '<config:styletto.dev_ie.dest>'
         dest: '<config:styletto.dev_ie.dest>'
         compress: true
-        base64: true
-        errors: 'error'
+        base64:   true
+        errors:   'error'
 
 
     concat:
@@ -101,7 +103,7 @@ module.exports = (grunt) ->
 
     min:
       dist:
-        src: '<config:concat.dist.dest>'
+        src:  '<config:concat.dist.dest>'
         dest: '<config:concat.dist.dest>'
 
     lint:
@@ -117,6 +119,6 @@ module.exports = (grunt) ->
       base: process.cwd()
 
 
-  @registerTask 'default', 'concat styletto:dev styletto:dev_ie jade'
+  @registerTask 'default',  'concat styletto:dev styletto:dev_ie jade'
   @registerTask 'reloader', 'concat styletto:dev styletto:dev_ie jade server'
-  @registerTask 'publish', 'concat min styletto jade'
+  @registerTask 'publish',  'concat min styletto jade'
