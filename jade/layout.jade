@@ -19,26 +19,25 @@ html(lang="ru")
       link(rel="canonical", href="{FIXME}")
 
       block head.css
-        //if gt IE 8
-          link(rel="stylesheet", href="publish/style.css")
+        link(rel="stylesheet", href="publish/style.css")
         //if lt IE 9
           link(rel="stylesheet", href="publish/style.ie.css")
-
       block head.js
-        //- If IE, use html5shiv to init html5 tags
         //if lt IE 9
           script(src="lib/html5shiv.js")
 
     body
       block body
-        .b-content
-          p somecontent
+        block body.header
+        block body.content
+          .b-content
+            p somecontent
+        block body.footer
 
       block body.js
         //- try to load jQuery from yandex CDN, and if fail use local one
         script(src="http://yandex.st/jquery/1.8.2/jquery.min.js")
-        script
-          window.jQuery || document.write("<script src=\"lib/jquery.min.js\"><\/script>")
+        script window.jQuery || document.write("<script src=\"lib/jquery.min.js\"><\/script>")
         script
           var _gaq = _gaq || [];
           _gaq.push(['_setAccount','#{ga}'],['_trackPageview']);

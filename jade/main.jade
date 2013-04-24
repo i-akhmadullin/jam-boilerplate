@@ -3,6 +3,14 @@ extends layout
 block head.title
   title Main page
 
-block body
+block body.header
+  .b-header
+    p b-header
+
+block body.content
   .b-content
     p main page
+
+block append head.js
+  script
+    //- place for additional script
