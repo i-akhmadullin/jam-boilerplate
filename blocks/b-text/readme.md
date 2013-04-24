@@ -6,7 +6,7 @@ CSS grid generation class.
 Configurating
 -------------
 
-For full list of variables see `blocks/config.styl`.
+For full list of variables see `b-text.styl`.
 
 
 Usage

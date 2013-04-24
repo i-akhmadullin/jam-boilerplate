@@ -1,6 +1,3 @@
-@import '../config';
-
-
 /*Eric Meyers CSS reset  */
 
 html, body, div, span, applet, object, iframe,
@@ -12,17 +9,16 @@ b, u, i, center,
 dl, dt, dd, ol, ul, li,
 fieldset, form, label, legend,
 table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-	margin: 0;
-	padding: 0;
-	border: 0;
-	font-size: 100%;
-	font: inherit;
-	vertical-align: baseline;
-}
+time, mark, audio, video
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
 
 
 /* HTML5 display definitions */
@@ -37,260 +33,197 @@ header,
 hgroup,
 menu,
 nav,
-section {
+section
     display: block;
-}
 
 audio,
 canvas,
-video {
+video
     display: inline-block;
-}
 
-audio:not([controls]) {
+audio:not([controls])
     display: none;
-}
 
-[hidden] {
+[hidden]
     display: none;
-}
 
 
 /* Base elements style */
 
-html {
-    -webkit-text-size-adjust: 100%;
+html
+    -webkit-text-size-adjust: 100% if not ie;
     -ms-text-size-adjust: 100%;
-}
 
 html,
 button,
 input,
 select,
-textarea {
-    font-family: baseFontFamily;
-    color: baseTextColor;
-}
+textarea
+    font-family: $baseFontFamily;
+    color: $baseTextColor;
 
-body {
-    font-size: baseFontSize;
-    line-height: baseLineHeight;
-    background: baseBackground;
-}
+body
+    font-size: $baseFontSize;
+    line-height: $baseLineHeight;
+    background: $baseBackground;
 
-::-moz-selection {
-    background: selectionBG;
+::-moz-selection
+    background: $selectionBG;
     text-shadow: none;
-}
 
-::selection {
-    background: selectionBG;
+::selection
+    background: $selectionBG;
     text-shadow: none;
-}
 
 
 /* Links */
 
-a {
-    color: linkNormal;
-}
-
-a:visited {
-    color: linkVisited;
-}
-
-a:hover {
-    color: linkHover;
-}
-
-a:active {
-    color: linkActive;
-}
-
-a:focus {
+a:focus
     outline: thin dotted;
-}
 
 a:hover,
-a:active {
+a:active
     outline: 0;
-}
 
 
 /* Embedded content */
 
-img {
+img
     vertical-align: middle;
-}
+    -ms-interpolation-mode: bicubic if ie;
 
-svg:not(:root) {
+svg:not(:root)
     overflow: hidden;
-}
 
 
 /* Lists */
 
-ol,
-ul {
-	list-style: none;
-}
+ul
+    list-style: none;
 
 
 /* Forms */
 
-label {
-    cursor: pointer;
-}
-
-legend {
+legend
     white-space: normal;
-}
+    margin-left: -7px if ie;
 
 button,
 input,
 select,
-textarea {
+textarea
+    font-family: inherit;
     font-size: 100%;
     margin: 0;
-    vertical-align: baseline;
-}
+    vertical-align: baseline if not ie;
+    vertical-align: middle if ie;
 
 button,
 input
-{
     line-height: normal;
-}
 
 button,
-input[type="button"],
+html input[type="button"],
 input[type="reset"],
-input[type="submit"] {
+input[type="submit"]
     cursor: pointer;
-    -webkit-appearance: button;
-}
+    -webkit-appearance: button if not ie;
+    overflow: visible if ie;
 
 button[disabled],
-input[disabled] {
+input[disabled]
     cursor: default;
-}
 
 input[type="checkbox"],
-input[type="radio"] {
+input[type="radio"]
     box-sizing: border-box;
     padding: 0;
-}
+    width: 13px if ie;
+    height: 13px if ie;
 
-input[type="search"] {
-    -webkit-appearance: textfield;
-    -moz-box-sizing: content-box;
-    -webkit-box-sizing: content-box;
+input[type="search"]
+    -webkit-appearance: textfield if not ie;
     box-sizing: content-box;
-}
 
 input[type="search"]::-webkit-search-decoration,
-input[type="search"]::-webkit-search-cancel-button {
-     -webkit-appearance: none;
-}
+input[type="search"]::-webkit-search-cancel-button
+     -webkit-appearance: none if not ie;
 
 button::-moz-focus-inner,
-input::-moz-focus-inner {
+input::-moz-focus-inner
      border: 0;
      padding: 0;
-}
 
-textarea {
+textarea
     overflow: auto;
     vertical-align: top;
     resize: vertical;
-}
-
-input:valid,
-textarea:valid {
-    background-color: formsValid;
-}
-
-input:invalid,
-textarea:invalid {
-    background-color: formsInvalid;
-}
 
 
 /* Tables */
 
-table {
+table
     border-collapse: collapse;
     border-spacing: 0;
-}
 
-td {
+td
     vertical-align: top;
-}
 
 
 /* Typography */
 
-abbr[title] {
+abbr[title]
     border-bottom: 1px dotted;
-}
 
 b,
-strong {
+strong
     font-weight: bold;
-}
 
 dfn,
 em,
-i {
+i
     font-style: italic;
-}
 
-hr {
+hr
     display: block;
     height: 1px;
     border: 0;
-    border-top: 1px solid baseHrColor;
-    margin: baseLineHeight 0;
+    border-top: 1px solid $baseHrColor;
+    margin: $baseLineHeight 0;
     padding: 0;
-}
 
 pre,
 code,
 kbd,
-samp {
-    font-family: fontMono;
+samp
+    font-family: $fontMono;
     font-size: 1em;
-}
 
-pre {
+pre
     white-space: pre;
     white-space: pre-wrap;
     word-wrap: break-word;
-}
 
 sub,
-sup {
-    position: relative;
-    vertical-align: baseline;
+sup
     font-size: 75%;
     line-height: 0;
-}
+    position: relative;
+    vertical-align: baseline;
 
-sup {
+sup
     top: -0.5em;
-}
-sub {
+
+sub
     bottom: -0.25em;
-}
 
 blockquote,
-q {
+q
     quotes: none;
-}
 
 blockquote:before,
 blockquote:after,
 q:before,
-q:after {
+q:after
     content: "";
     content: none;
-}

@@ -29,7 +29,7 @@ module.exports = (grunt) ->
         tasks: 'jade reload'
 
     jade:
-      debug:
+      compile:
         options:
           pretty:  true
           data:

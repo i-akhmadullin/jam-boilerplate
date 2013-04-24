@@ -1,140 +1,38 @@
 // font analogs list http://my.opera.com/area42/blog/css-font-matching-windows-mac-and-linux
 // for more fonts see http://www.apaddedcell.com/web-fonts , http://www.ampsoft.net/webdesign-l/WindowsMacFonts.html
 
+$fontArial       = Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif;
+$fontCourier     = "Courier New", Courier, FreeMono, "Nimbus Mono L", "Liberation Mono", monospace;
+$fontGeorgia     = Georgia, "Bitstream Charter", "Century Schoolbook L", "Liberation Serif", Times, serif;
+$fontLucidia     = "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
+$fontLucidiaMono = "Lucida Console", Monaco, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", monospace;
+$fontPalatino    = Palatino, "Palatino Linotype", Palladio, "URW Palladio L", "Book Antiqua", "Liberation Serif", Times, serif;
+$fontTahoma      = Tahoma, Geneva, "DejaVu Sans Condensed", sans-serif;
+$fontTimes       = "Times New Roman", Times, "Nimbus Roman No9 L", "FreeSerif", "Liberation Serif", serif;
+$fontVerdana     = Verdana, "Bitstream Vera Sans", "DejaVu Sans", "Liberation Sans", Geneva, sans-serif;
 
-fontArial       = Arial, Helvetica, FreeSans, "Liberation Sans", "Nimbus Sans L", sans-serif;
-fontCourier     = "Courier New", Courier, FreeMono, "Nimbus Mono L", "Liberation Mono", monospace;
-fontGeorgia     = Georgia, "Bitstream Charter", "Century Schoolbook L", "Liberation Serif", Times, serif;
-fontLucidia     = "Lucida Sans", "Lucida Sans Unicode", "Lucida Grande", Lucida, sans-serif;
-fontLucidiaMono = "Lucida Console", Monaco, "DejaVu Sans Mono", "Bitstream Vera Sans Mono", "Liberation Mono", monospace;
-fontPalatino    = Palatino, "Palatino Linotype", Palladio, "URW Palladio L", "Book Antiqua", "Liberation Serif", Times, serif;
-fontTahoma      = Tahoma, Geneva, "DejaVu Sans Condensed", sans-serif;
-fontTimes       = "Times New Roman", Times, "Nimbus Roman No9 L", "FreeSerif", "Liberation Serif", serif;
-fontVerdana     = Verdana, "Bitstream Vera Sans", "DejaVu Sans", "Liberation Sans", Geneva, sans-serif;
+$fontSerif = $fontGeorgia;
+$fontSans  = $fontArial;
+$fontMono  = $fontCourier;
 
-fontSerif = fontGeorgia;
-fontSans  = fontArial;
-fontMono  = fontCourier;
+$verticalRythmBase = 24px;
 
+$baseFontSize   = 16px;
+$baseFontFamily = $fontSans;
+$baseLineHeight = ($verticalRythmBase/$baseFontSize)em;
+$baseTextColor  = #000;
+$baseBackground = #fff;
+$baseHrColor    = #ccc;
 
-baseFontSize   = 15px;
-baseFontFamily = fontSans;
-baseLineHeight = 24px;
-baseTextColor  = #222;
-baseBackground = #fff;
-baseHrColor    = #ccc;
-
-linkNormal  = #00e;
-linkVisited = #551a8b;
-linkActive  = #06e;
-linkHover   = #06e;
-
-
-formsValid   = #ffffff;
-formsInvalid = #f0dddd;
-
-
-selectionBG = #b3d4fc;
+$selectionBG = #b3d4fc;
 
 
 // Grid
 
-gridColumns = 12;
+$gridColumnWidth = 60px;
+$gridGutterWidth = 20px;
 
-gridColumnWidth = 60px;
-gridGutterWidth	= 20px;
-
-gridContainerWidth = gridColumns * gridColumnWidth + (gridColumns - 1) * gridGutterWidth;
-
-gridContainerPadding = 0;
-
-fluidGridContainerMinWidth = gridContainerWidth;
-fluidGridContainerMaxWidth = 1280px;
-
-fluidGridColumnWidth = gridColumnWidth / gridContainerWidth * 100;
-fluidGridGutterWidth = gridGutterWidth / gridContainerWidth * 100;
-
-
-// Text decoration
-
-textBottomMargin     = (baseLineHeight/2);
-
-textHeaderFontFamily = baseFontFamily;
-textHeaderFontWeight = normal;
-textHeaderColor      = baseTextColor;
-textHeaderLinkColor  = inherit;
-textHeaderLinkStyle  = none;
-
-
-textH1FontFamily = textHeaderFontFamily;
-textH1FontSize   = 48px;
-textH1LineHeight = 70px;
-textH1FontWeight = textHeaderFontWeight;
-textH1Color      = textHeaderColor;
-
-textH1Mixin()
-    border-bottom: 2px solid #000;
-    margin-bottom: baseLineHeight;
-
-textH2FontFamily = textHeaderFontFamily;
-textH2FontSize   = 36px;
-textH2LineHeight = baseLineHeight*1.5;
-textH2FontWeight = bold;
-textH2Color      = textHeaderColor;
-
-textH2Mixin()
-
-textH3FontFamily = textHeaderFontFamily;
-textH3FontSize   = 24px;
-textH3LineHeight = baseLineHeight;
-textH3FontWeight = textHeaderFontWeight;
-textH3Color      = #c00;
-
-textH3Mixin()
-
-textH4FontFamily = textHeaderFontFamily;
-textH4FontSize   = 18px;
-textH4LineHeight = baseLineHeight;
-textH4FontWeight = bold;
-textH4Color      = textHeaderColor;
-
-textH4Mixin()
-
-textH5FontFamily = textHeaderFontFamily;
-textH5FontSize   = 16px;
-textH5LineHeight = baseLineHeight;
-textH5FontWeight = textHeaderFontWeight;
-textH5Color      = textHeaderColor;
-
-textH5Mixin()
-
-textH6FontFamily = textHeaderFontFamily;
-textH6FontSize   = 16px;
-textH6LineHeight = baseLineHeight;
-textH6FontWeight = textHeaderFontWeight;
-textH6Color      = textHeaderColor;
-
-textH6Mixin()
-
-textPreMixin()
-    border-left: 2px solid #c00;
-    background: #eee;
-    font-size: 14px;
-
-textBlockquoteMixin()
-
-textTableCellPadding = 0 5px;
-textTableFontSize    = 13px;
-textTableBorder      = 1px solid #ccc;
-textTableHeaderBG    = #eee;
-
-
-// mixin for crearfix
-
-clearFix()
-    zoom: 1;
-    &:before, &:after
-        content: "";
-        display: table;
-    &:after
-        clear: both;
+columns( $count )
+    width: $gridColumnWidth * $count + $gridGutterWidth * ( $count - 1 );
+    margin-right: $gridGutterWidth;
+    float: left;
